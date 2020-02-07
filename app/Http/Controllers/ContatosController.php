@@ -10,15 +10,15 @@ use DataTables;
 
 class ContatosController extends Controller
 {
+    // Verifica se o usuário está logado, se não estiver redireciona para tela de login
     public function __construct() {
         $this->middleware('auth');
     }
 
+    // Recupera os contatos do banco e gera o código para mostrá-los em DataTable
+    // Também cria os botões de ação
     public function index(Request $request)
     {
-        // Recupera os contatos do banco e gera o código para mostrá-los em DataTable
-        // Também cria os botões de ação
-
         if ($request->ajax()) {
             $contacts = Contatos::latest()->get();
             return Datatables::of($contacts)
@@ -39,6 +39,8 @@ class ContatosController extends Controller
     }
 
 
+    // Recebe dados do formulário da view home e salva em seu respectivo equivalente do banco
+    // Armazena imagem no servidor com nome único e sua extensão (que é o que vai ser salvo no banco) e redireciona para a página anterior com uma mensagem de sucesso
     public function store(Request $request)
     {
         $objeto = new Contatos;
@@ -62,6 +64,7 @@ class ContatosController extends Controller
         return back()->with('contact-added','Seu contato foi adicionado com sucesso!');
     }
 
+    // Exibe informações do contato selecionado e todas as tarefas vinculadas ao seu id na view details
     public function show($id)
     {
         $contact = Contatos::find($id);
@@ -70,6 +73,8 @@ class ContatosController extends Controller
         return view('details', compact('contact', 'todo'));
     }
 
+    // Atualiza os dados do contato no banco de dados
+    // A imagem só vai ser alterada se o usuário selecionou uma nova
     public function update(Request $request)
     {
         $contact = Contatos::find($request->contato);
@@ -95,6 +100,7 @@ class ContatosController extends Controller
 
     }
 
+    // Remove o contato selecionado e redireciona para a página anterior com uma mensagem de sucesso
     public function destroy($id)
     {
         $contact = Contatos::find($id);

@@ -8,6 +8,7 @@ use App\Todo;
 
 class TodoController extends Controller
 {
+    // Armazena uma nova tarefa no banco de dados e retorna para a página anterior com uma mensagem de sucesso
     public function store(Request $request) {
         $todo = new Todo;
         $todo->descricao = $request->task;
@@ -19,6 +20,7 @@ class TodoController extends Controller
 
     }
 
+    // Remove uma tarefa do banco de dados e retorna para a página anterior com uma mensagem de sucesso
     public function destroy($id) {
         $todo = Todo::find($id);
         $todo->delete();

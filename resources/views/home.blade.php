@@ -67,36 +67,36 @@
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="primeiro_nome">Primeiro Nome</label>
-                                    <input type="text" id="primeiro_nome" name="primeiro_nome" class="form-control">
+                                    <input type="text" id="primeiro_nome" name="primeiro_nome" class="form-control" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="sobrenome">Sobrenome</label>
-                                    <input type="text" id="sobrenome" name="sobrenome" class="form-control">
+                                    <input type="text" id="sobrenome" name="sobrenome" class="form-control" required>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="telefone">Telefone</label>
-                                    <input type="text" id="telefone" name="telefone" class="form-control">
+                                    <input type="text" id="telefone" name="telefone" class="form-control" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="email">E-mail</label>
-                                    <input type="text" id="email" name="email" class="form-control">
+                                    <input type="text" id="email" name="email" class="form-control" required>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <label for="foto">Foto</label>
-                                    <input type="file" id="foto" class="form-control" name="foto"/>
+                                    <input type="file" id="foto" class="form-control" name="foto" required/>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <label for="descricao">Descrição</label>
-                                    <textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
+                                    <textarea class="form-control" id="descricao" name="descricao" rows="3" required></textarea>
                                 </div>
                             </div>
 
