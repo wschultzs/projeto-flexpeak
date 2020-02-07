@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\File;
 
 class ContatosController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $contacts = DB::table('contatos')->orderBy('id', 'desc')->get();
