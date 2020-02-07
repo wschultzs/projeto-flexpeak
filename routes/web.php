@@ -22,3 +22,6 @@ Route::post('/criar-contato', 'ContatosController@store')->name('armazenar.conta
 Route::get('/remover-contato/{id}', 'ContatosController@destroy')->name('remover.contato');
 Route::get('/informacoes-do-contato/{id}', 'ContatosController@show')->name('detalhar.contato');
 Route::post('/editar-contato', 'ContatosController@update')->name('editar.contato');
+
+Route::get('criar-tarefa', 'TodoController@store')->name('criar.tarefa');
+Route::get('remover-tarefa/{id}', 'TodoController@destroy')->name('remover.tarefa');

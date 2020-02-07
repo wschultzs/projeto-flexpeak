@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contatos;
+use App\Todo;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Storage;
@@ -10,11 +11,6 @@ use Illuminate\Support\Facades\File;
 
 class ContatosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $contacts = DB::table('contatos')->orderBy('id', 'desc')->get();
@@ -22,12 +18,6 @@ class ContatosController extends Controller
         return view('home', compact('contacts'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $objeto = new Contatos;
@@ -55,7 +45,8 @@ class ContatosController extends Controller
     {
         $contact = Contatos::find($id);
 
-        return view('details', compact('contact'));
+        $todo = Todo::where('contato_id', $id)->orderBy('id', 'desc')->get();
+        return view('details', compact('contact', 'todo'));
     }
 
     public function update(Request $request)
