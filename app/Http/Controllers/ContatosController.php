@@ -17,7 +17,7 @@ class ContatosController extends Controller
 
     public function index()
     {
-        $contacts = DB::table('contatos')->orderBy('id', 'desc')->get();
+        $contacts = DB::table('contatos')->orderBy('id', 'desc')->paginate(10);
 
         return view('home', compact('contacts'));
     }
