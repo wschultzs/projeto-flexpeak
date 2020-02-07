@@ -4,6 +4,7 @@ O presente sistema age como uma agenda de contatos. Irei explicar como funciona.
     - Executar a clonagem do repositório;
     - Executar o composer install;
     - Executar o npm install
+    - Executar o php artisan migrate
 
 1) TECNOLOGIAS
     O sistema foi totalmente desenvolvido em Laravel 6 para o back-end, MySQL como SGBD e Bootstrap 4 e jQuery para o front-end.
