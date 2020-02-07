@@ -4,6 +4,7 @@ O presente sistema age como uma agenda de contatos. Irei explicar como funciona.
     - Executar a clonagem do repositório;
     - Executar o composer install;
     - Executar o npm install;
+    - Renomear .env.example na raíz do projeto para .env e executar php artisan key:generate
     - Executar o php artisan migrate
 
 1) TECNOLOGIAS
