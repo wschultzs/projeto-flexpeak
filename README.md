@@ -3,17 +3,18 @@ O presente sistema age como uma agenda de contatos. Irei explicar como funciona.
 0) INSTALAÇÃO
     - Executar a clonagem do repositório;
     - Executar o composer install;
-    - Executar o npm install
+    - Executar o npm install;
     - Executar o php artisan migrate
 
 1) TECNOLOGIAS
-    O sistema foi totalmente desenvolvido em Laravel 6 para o back-end, MySQL como SGBD e Bootstrap 4 e jQuery para o front-end.
+    - Backend: Laravel 6 e MySQL;
+    - Frontend: Bootstrap 4, jQuery e DataTable;
     
 2) AUTENTICAÇÃO
     O sistema conta com o sistema de autenticação nativo do Laravel, com o layout levemente alterado por mim. Consiste em uma tela com formulário de login (que também é a tela inicial do sistema) e uma tela com formulário de registro, acessível através do seu atalho no menu superior de navegação.
    
 3) DASHBOARD
-    Após efetuar o login, o usuário será direcionado para um dashboard que consiste de uma tabela que lista os contatos através do nome, telefone, e-mail e uma breve descrição. Acima da tabela existe um botão azul que ao ser clicado irá exibir um formulário em uma janela modal, onde o usuário irá inserir informações sobre um contato e adicionar uma foto do mesmo. Após cadastrar o contato, será exibida uma mensagem flash de sucesso e o novo contato irá aparecer listado na tabela. 
+    Após efetuar o login, o usuário será direcionado para um dashboard que consiste de uma tabela montada com o DataTable que lista os contatos através do nome, telefone e e-mail. Acima da tabela existe um botão azul que ao ser clicado irá exibir um formulário em uma janela modal, onde o usuário irá inserir informações sobre um contato e adicionar uma foto do mesmo. Após cadastrar o contato, será exibida uma mensagem flash de sucesso e o novo contato irá aparecer listado na tabela. 
     
     A última coluna da tabela é a coluna de ação: Nela, é possível editar (botão azul com ícone de caneta), remover (botão vermelho com ícone de lixeira) e visualizar mais informações (botão verde) sobre o contato. O botão de edição irá abrir outra janela modal com formulário, que estarão já preenchidos com os dados do contato em questão e irá atualizar os dados apenas dos campos que o usuário alterar; O botão vermelho irá imediatamente remover o contato escolhido e exibir uma mensagem flash vermelha de sucesso; O botão verde irá redirecionar o usuário para outra tela, a qual explicarei no próximo tópico.
    
