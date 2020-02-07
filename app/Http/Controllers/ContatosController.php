@@ -59,13 +59,14 @@ class ContatosController extends Controller
         $contact->email = $request->email;
         $contact->descricao = $request->descricao;
 
-        $files = $request->file('foto');
-      
-        $destinationPath = 'uploads/'; 
-        $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
-        $files->move($destinationPath, $profileImage);
+        if($request->file('foto')){
+            $files = $request->file('foto');
+            $destinationPath = 'uploads/'; 
+            $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath, $profileImage);
 
-        $contact->foto = $profileImage;
+            $contact->foto = $profileImage;
+        }
 
         $contact->save();
 
