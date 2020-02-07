@@ -6,8 +6,7 @@ use App\Contatos;
 use App\Todo;
 use Illuminate\Http\Request;
 use DB;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
+use DataTables;
 
 class ContatosController extends Controller
 {
@@ -15,12 +14,30 @@ class ContatosController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $contacts = DB::table('contatos')->orderBy('id', 'desc')->paginate(10);
+        // Recupera os contatos do banco e gera o código para mostrá-los em DataTable
+        // Também cria os botões de ação
 
-        return view('home', compact('contacts'));
+        if ($request->ajax()) {
+            $contacts = Contatos::latest()->get();
+            return Datatables::of($contacts)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+   
+                           $btn = '<a class="mr-2" href="'. route('detalhar.contato', $row->id) .'"><button class="btn btn-warning"><i class="fas fa-info"></i></button></a>';
+                           $btn .= '<button class="btn btn-primary" class="ml-2" data-toggle="modal" data-target="#edit-contact" data-contato="'.$row->id.'" data-primeironome="'.$row->primeiro_nome.'" data-sobrenome="'.$row->sobrenome.'" data-telefone="'.$row->telefone.'" data-email="'.$row->email.'" data-foto="'.$row->foto.'" data-descricao="'.$row->descricao.'"><i class="fas fa-edit"></i></button>';
+                           $btn .= '<a href="'. route('remover.contato', $row->id) .'" class="ml-2"><button class="btn btn-danger"><i class="far fa-trash-alt"></i></button></a>';
+     
+                            return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+      
+        return view('home');
     }
+
 
     public function store(Request $request)
     {

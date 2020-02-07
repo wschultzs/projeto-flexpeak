@@ -9,13 +9,67 @@
 
     <title>Projeto de Seleção - William Schultz</title>
 
+    <!-- Datatable links -->
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://kit.fontawesome.com/086ea370f3.js" crossorigin="anonymous"></script>
-    <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
+    <!-- Datatable scripts --> 
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript">
+    // Inicia o código do DataTable e traduz
+    $(document).ready(function(){
+        var table = $('#tabela-contatos').DataTable({
+            "language": {
+                "sEmptyTable": "Nenhum registro encontrado",
+                "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ".",
+                "sLengthMenu": "_MENU_ resultados por página",
+                "sLoadingRecords": "Carregando...",
+                "sProcessing": "Processando...",
+                "sZeroRecords": "Nenhum registro encontrado",
+                "sSearch": "Pesquisar",
+                "oPaginate": {
+                    "sNext": "Próximo",
+                    "sPrevious": "Anterior",
+                    "sFirst": "Primeiro",
+                    "sLast": "Último"
+                },
+                "oAria": {
+                    "sSortAscending": ": Ordenar colunas de forma ascendente",
+                    "sSortDescending": ": Ordenar colunas de forma descendente"
+                },
+                "select": {
+                    "rows": {
+                        "_": "Selecionado %d linhas",
+                        "0": "Nenhuma linha selecionada",
+                        "1": "Selecionado 1 linha"
+                    }
+                }
+            },
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('home') }}",
+            columns: [
+                {data: 'primeiro_nome', name: 'primeiro_nome'},
+                {data: 'telefone', name: 'telefone'},
+                {data: 'email', name: 'email'},
+                {data: 'action', name: 'action', orderable: false, searchable: false},
+            ],
+        });
+
+        console.log(table.columns());
+    })
+        
+    
+     
+    </script>
     <script>
         $(document).ready(function() {
         $('#edit-contact').on('show.bs.modal', function (event) {

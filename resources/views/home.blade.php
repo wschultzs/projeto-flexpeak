@@ -35,31 +35,19 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="tabela-contatos" class="table table-bordered">
+                <table id="tabela-contatos" class="table data-table" style="width: 100%;">
                         <thead>
                             <tr>
                                 <th>Nome</th>
                                 <th>Telefone</th>
                                 <th>E-mail</th>
-                                <th>Descrição</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($contacts as $contact)
-                            <tr>
-                                <th>{{$contact->primeiro_nome}} {{$contact->sobrenome}}</th>
-                                <th>{{$contact->telefone}}</th>
-                                <th>{{$contact->email}}</th>
-                                <th>{{\Illuminate\Support\Str::limit($contact->descricao, 10, $end = '...')}}</th>
-                                <th>
-                                    <a href="{{route('detalhar.contato', $contact->id)}}"><button class="btn btn-warning"><i class="fas fa-info"></i></button></a> 
-                                    <button class="btn btn-primary" data-toggle="modal" data-target="#edit-contact" data-contato="{{$contact->id}}" data-primeironome="{{$contact->primeiro_nome}}" data-sobrenome="{{$contact->sobrenome}}" data-telefone="{{$contact->telefone}}" data-email="{{$contact->email}}" data-foto="{{$contact->foto}}" data-descricao="{{$contact->descricao}}"><i class="fas fa-edit"></i></button>
-                                    <a href="{{route('remover.contato', $contact->id)}}"><button class="btn btn-danger"><i class="far fa-trash-alt"></i></button></a></th>
-                            </tr>
-                        @endforeach
+                        
                         </tbody>
-                        {{$contacts->links()}}
+                        
                     </table>
                 </div>
 
